@@ -76,74 +76,74 @@ const (
 	KEY_ELSE                  = "else"
 )
 
-type subSchema struct {
-	draft *Draft
+type SubSchema struct {
+	Draft *Draft
 
 	// basic subSchema meta properties
-	id          *gojsonreference.JsonReference
-	title       *string
-	description *string
+	ID          *gojsonreference.JsonReference
+	Title       *string
+	Description *string
 
-	property string
+	Property string
 
 	// Quick pass/fail for boolean schemas
-	pass *bool
+	Pass *bool
 
 	// Types associated with the subSchema
-	types jsonSchemaType
+	Types jsonSchemaType
 
 	// Reference url
-	ref *gojsonreference.JsonReference
+	Ref *gojsonreference.JsonReference
 	// Schema referenced
-	refSchema *subSchema
+	RefSchema *SubSchema
 
 	// hierarchy
-	parent                      *subSchema
-	itemsChildren               []*subSchema
-	itemsChildrenIsSingleSchema bool
-	propertiesChildren          []*subSchema
+	Parent                      *SubSchema
+	ItemsChildren               []*SubSchema
+	ItemsChildrenIsSingleSchema bool
+	PropertiesChildren          []*SubSchema
 
 	// validation : number / integer
-	multipleOf       *big.Rat
-	maximum          *big.Rat
-	exclusiveMaximum *big.Rat
-	minimum          *big.Rat
-	exclusiveMinimum *big.Rat
+	MultipleOf       *big.Rat
+	Maximum          *big.Rat
+	ExclusiveMaximum *big.Rat
+	Minimum          *big.Rat
+	ExclusiveMinimum *big.Rat
 
 	// validation : string
-	minLength *int
-	maxLength *int
-	pattern   *regexp.Regexp
-	format    string
+	MinLength *int
+	MaxLength *int
+	Pattern   *regexp.Regexp
+	Format    string
 
 	// validation : object
-	minProperties *int
-	maxProperties *int
-	required      []string
+	MinProperties *int
+	MaxProperties *int
+	Required      []string
 
-	dependencies         map[string]interface{}
-	additionalProperties interface{}
-	patternProperties    map[string]*subSchema
-	propertyNames        *subSchema
+	Dependencies         map[string]interface{}
+	AdditionalProperties interface{}
+	PatternProperties    map[string]*SubSchema
+	PropertyNames        *SubSchema
 
 	// validation : array
-	minItems    *int
-	maxItems    *int
-	uniqueItems bool
-	contains    *subSchema
+	MinItems    *int
+	MaxItems    *int
+	UniqueItems bool
+	Contains    *SubSchema
 
-	additionalItems interface{}
+	AdditionalItems interface{}
 
 	// validation : all
-	_const *string //const is a golang keyword
-	enum   []string
+	Const *string
+	Enum  []string
 
 	// validation : subSchema
-	oneOf []*subSchema
-	anyOf []*subSchema
-	allOf []*subSchema
-	not   *subSchema
-	_if   *subSchema // if/else are golang keywords
-	_then *subSchema
-	_else *subSchema
+	OneOf []*SubSchema
+	AnyOf []*SubSchema
+	AllOf []*SubSchema
+	Not   *SubSchema
+	If    *SubSchema
+	Then  *SubSchema
+	Else  *SubSchema
 }
